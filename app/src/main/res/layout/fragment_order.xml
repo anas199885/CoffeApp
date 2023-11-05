@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/ShadesLight"
     android:orientation="vertical">
 
@@ -297,7 +297,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Continue"
+        android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="35dp"

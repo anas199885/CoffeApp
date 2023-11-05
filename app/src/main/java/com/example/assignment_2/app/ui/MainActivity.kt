@@ -1,4 +1,4 @@
-package com.example.assignment_2
+package com.example.assignment_2.app.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

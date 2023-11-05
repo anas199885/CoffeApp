@@ -1,4 +1,4 @@
-package com.example.assignment_2
+package com.example.assignment_2.app.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.assignment_2.R
 import com.example.assignment_2.databinding.FragmentHomeBinding
 
 class HomeFragment:Fragment() {
