@@ -13,5 +13,7 @@ data class PaymentRemoteModel(
     val cardNumber: String,
     val cardExpiryMonth: String,
     val cardExpiryYear: String,
-    val cvvNumber: String
+    val cvvNumber: String,
+
+    val OrderInfo: OrderRemoteModel
 ):Parcelable

@@ -30,6 +30,7 @@
                     android:title="@string/toolbarOrder"
                     android:titleTextColor="@color/white" />
 
+
                 <TextView
                     android:id="@+id/tv_infoTitle"
                     android:layout_width="match_parent"
@@ -119,7 +120,7 @@
                 android:id="@+id/PaymentScreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_payInfo"
@@ -166,7 +167,7 @@
                 android:id="@+id/cardScreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_cardNum"

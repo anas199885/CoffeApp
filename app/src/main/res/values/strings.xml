@@ -35,5 +35,11 @@
     <string name="card_type">Card Type</string>
     <string name="card_number">Card Number</string>
     <string name="card_expiry">Card Expiry</string>
+    <string name="summary">Summary</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="fullName">Full Name</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="pickupTime">Pickup Time</string>
+    <string name="order">Order</string>
 
 </resources>

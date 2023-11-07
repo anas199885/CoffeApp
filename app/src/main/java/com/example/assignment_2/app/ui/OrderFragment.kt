@@ -31,37 +31,48 @@ class OrderFragment : Fragment() {
     }
 
     private fun initListener() {
-        var drink: String = "" // Initialize drink variable
+        var drink= ""
 
         binding.cvAmerican.setOnClickListener {
             binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesDark))
+            binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesLight))
             drink ="Americano"
             showDrinkSize()
         }
 
         binding.cvCappuccino.setOnClickListener {
             binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesDark))
+            binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesLight))
             drink = "Cappuccino"
             showDrinkSize()
         }
 
         binding.cvLatte.setOnClickListener {
             binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesDark))
+            binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesLight))
             drink = "Latte"
             showDrinkSize()
         }
 
         binding.cvMacchiato.setOnClickListener {
             binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesDark))
+            binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesLight))
+            binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesLight))
             drink = "Macchiato"
             showDrinkSize()
         }
 
-        // Initialize the size and options
-        var size: String = ""
+        var size = ""
         val options: MutableList<String> = mutableListOf()
 
-        // Handle size selection
+
         binding.rdSize.setOnCheckedChangeListener { _, checkedId ->
             size = when (checkedId) {
                 R.id.smallSize -> "Small"
@@ -70,9 +81,9 @@ class OrderFragment : Fragment() {
                 else -> ""
             }
             showOptions()
+            continueClick(drink,size,options)
         }
 
-        // Handle option selection
         val optionCheckBoxes = listOf(
             binding.checkBox1,
             binding.checkBox2,
@@ -93,34 +104,29 @@ class OrderFragment : Fragment() {
             }
         }
 
-        binding.btnContinue.isClickable = false
+//        if (drink!= "" || size!= "") {
+
+//        }
+    }
+
+    private fun continueClick(drink: String, size: String, options: MutableList<String>) {
 
         binding.btnContinue.setOnClickListener {
-
             val order = OrderRemoteModel(drink, size, options)
             val bundle = bundleOf("order" to order)
+            val resultFragment=ResultFragment()
+            resultFragment.arguments = bundle
             findNavController().navigate(R.id.paymentFragment, bundle)
         }
     }
 
-    private fun setDrink(drinkType: String) {
-         //drink = drinkType
-        // Update the UI to highlight the selected drink
-        // (You can add your UI updates here)
-    }
-
     private fun showDrinkSize() {
-        // Update the UI to show the drink size options
         binding.drinkSize.isVisible = true
     }
 
     private fun showOptions() {
-        // Update the UI to show the options and enable the "Continue" button
         binding.options.isVisible = true
         binding.btnContinue.setBackgroundColor(resources.getColor(R.color.ShadesDark))
         binding.btnContinue.isClickable = true
     }
-
-
-
 }

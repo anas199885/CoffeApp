@@ -24,13 +24,17 @@ class ResultFragment:Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val order = arguments?.getParcelable<OrderRemoteModel>("order")
-        val payment = arguments?.getParcelable<PaymentRemoteModel>("order")
-        Toast.makeText(requireContext(), "${order.toString()}, ${payment.toString()}",Toast.LENGTH_LONG).show()
-
-        initListener()
+       initListener()
     }
 
     private fun initListener() {
+        val orderInfo = arguments?.getParcelable<PaymentRemoteModel>("Payment")
+        binding.payment =orderInfo
+        if (orderInfo?.OrderInfo?.drinkOptions?.isNotEmpty() == true) {
+            binding.tvOrder.text = "A ${orderInfo?.OrderInfo?.drinkSize} Of ${orderInfo?.OrderInfo?.drinkName}, With ${orderInfo?.OrderInfo?.drinkOptions}"
+        }else{
+            binding.tvOrder.text = "A ${orderInfo?.OrderInfo?.drinkSize} Of ${orderInfo?.OrderInfo?.drinkName}"
+        }
     }
+
 }
