@@ -1,5 +1,6 @@
 package com.example.assignment_2.app.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,11 +28,12 @@ class ResultFragment:Fragment() {
        initListener()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initListener() {
         val orderInfo = arguments?.getParcelable<PaymentRemoteModel>("Payment")
         binding.payment =orderInfo
         if (orderInfo?.OrderInfo?.drinkOptions?.isNotEmpty() == true) {
-            binding.tvOrder.text = "A ${orderInfo?.OrderInfo?.drinkSize} Of ${orderInfo?.OrderInfo?.drinkName}, With ${orderInfo?.OrderInfo?.drinkOptions}"
+            binding.tvOrder.text = "A ${orderInfo.OrderInfo.drinkSize} Of ${orderInfo.OrderInfo.drinkName}, With ${orderInfo.OrderInfo.drinkOptions}"
         }else{
             binding.tvOrder.text = "A ${orderInfo?.OrderInfo?.drinkSize} Of ${orderInfo?.OrderInfo?.drinkName}"
         }
