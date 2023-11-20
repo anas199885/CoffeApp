@@ -14,7 +14,6 @@ import com.example.assignment_2.databinding.FragmentOrderBinding
 
 class OrderFragment : Fragment() {
     private lateinit var binding: FragmentOrderBinding
-    private val dataBundle = Bundle()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,39 +32,14 @@ class OrderFragment : Fragment() {
     private fun initListener() {
         var drink= ""
 
-        binding.cvAmerican.setOnClickListener {
-            binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesDark))
-            binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            drink ="Americano"
-            showDrinkSize()
-        }
-
-        binding.cvCappuccino.setOnClickListener {
-            binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesDark))
-            binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            drink = "Cappuccino"
-            showDrinkSize()
-        }
-
-        binding.cvLatte.setOnClickListener {
-            binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesDark))
-            binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            drink = "Latte"
-            showDrinkSize()
-        }
-
-        binding.cvMacchiato.setOnClickListener {
-            binding.textMacchiato.setBackgroundColor(resources.getColor(R.color.ShadesDark))
-            binding.textAmericano.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textCappuccino.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            binding.textLatte.setBackgroundColor(resources.getColor(R.color.ShadesLight))
-            drink = "Macchiato"
+        binding.rdCoffeeType.setOnCheckedChangeListener { _, checkedId ->
+            drink = when (checkedId) {
+                R.id.rb_americano -> "Americano"
+                R.id.rb_cappuccino -> "Cappuccino"
+                R.id.rb_latte -> "Latte"
+                R.id.rb_macchiato -> "Macchiato"
+                else -> ""
+            }
             showDrinkSize()
         }
 
@@ -104,9 +78,6 @@ class OrderFragment : Fragment() {
             }
         }
 
-//        if (drink!= "" || size!= "") {
-
-//        }
     }
 
     private fun continueClick(drink: String, size: String, options: MutableList<String>) {
@@ -126,7 +97,6 @@ class OrderFragment : Fragment() {
 
     private fun showOptions() {
         binding.options.isVisible = true
-        binding.btnContinue.setBackgroundColor(resources.getColor(R.color.ShadesDark))
         binding.btnContinue.isClickable = true
     }
 }
